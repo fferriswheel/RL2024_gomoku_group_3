@@ -157,7 +157,8 @@ class Game(object):
                     print('_'.center(8), end='')
             print('\r\n\r\n')
 
-    def start_play(self, player1, player2, start_player=0, is_shown=1):
+    def start_play(self, player1, player2, start_player=0, is_shown=1):      
+        # 陈俊康修改，在原有current_state(当前特征平面)的基础上添加历史特征平面（合并为temp_state）
         """start a game between two players"""
         if start_player not in (0, 1):
             raise Exception('start_player should be either 0 (player1 first) '
@@ -300,6 +301,7 @@ class Game(object):
 
 
     def start_self_play(self, player, is_shown=0, temp=1e-3):
+        # 陈俊康修改，在原有current_state(当前特征平面)的基础上添加历史特征平面（合并为temp_state）
         """ start a self-play game using a MCTS player, reuse the search tree,
         and store the self-play data: (state, mcts_probs, z) for training
         """
